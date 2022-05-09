@@ -25,4 +25,6 @@ GOOS=linux GOARCH=amd64 go build -o webapp.elf cmd/web/*.go
 GOOS=windows GOARCH=amd64 go build -o webapp.exe cmd/web/*.go
 
 # Cross compilation instructions (MacOS Desktop/MacBooks)
-GOOS=darwin GOARCH=amd64 go build -o webapp.macho cmd/web/*.go
+GOOS=darwin GOARCH=amd64 go build -o webapp.macho cmd/web/*.go <br>
+**Alternatively, for M1 enabled MacBooks, they are finally supported in Golang 1.18, simply point to the ARM64 architecture**<br>
+GOOS=darwin GOARCH=arm64 go build -o webapp.macho cmd/web/*.go
