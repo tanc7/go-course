@@ -1,7 +1,10 @@
 package main
 
 import (
+	"github.com/tanc7/go-course/pkg/config"
 	"github.com/tanc7/go-course/pkg/handlers"
+	"github.com/tanc7/go-course/pkg/render"
+	"log"
 	"net/http"
 )
 
@@ -11,10 +14,23 @@ const portNumber = ":8080"
 
 //main wtf bro.
 func main() {
+	var app config.AppConfig
+
+	tc, err := render.CreateTemplateCache()
+	if err != nil {
+		log.Fatal("Cannot create template cache")
+	}
+
+	app.TemplateCache = tc
+	app.UseCache = false
+	repo := handlers.NewRepo(&app)
+	handlers.NewHandlers(repo)
+
+	render.NewTemplates(&app)
 	//fmt.Println("Hello world!")
 	// This is basically a router.rb or route.py module
-	http.HandleFunc("/", handlers.Home)
-	http.HandleFunc("/about", handlers.About)
+	http.HandleFunc("/", handlers.Repo.Home)
+	http.HandleFunc("/about", handlers.Repo.About)
 	//http.HandleFunc("/divide", Divide)
 	//http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 	//	n, err := fmt.Fprintf(w, "Hello world!")

@@ -1,11 +1,31 @@
 package handlers
 
 import (
+	"github.com/tanc7/go-course/pkg/config"
 	"github.com/tanc7/go-course/pkg/render"
 	"net/http"
 )
 
-func Home(w http.ResponseWriter, r *http.Request) {
+// Repo the repository used by the handlers
+var Repo *Repository
+
+// Repository is the repository type
+type Repository struct {
+	App *config.AppConfig
+}
+
+// NewRepo creates a new respoitory
+func NewRepo(a *config.AppConfig) *Repository {
+	return &Repository{App: a}
+}
+
+// NewHandlers sets the repository for the handlers
+func NewHandlers(r *Repository) {
+	Repo = r
+}
+
+// The first arg specifies a "receiver" which is the instance of Repository struct, you need to set it to render.repo.repository in main because it specifies a receiver now.
+func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "home.page.tmpl.html")
 }
 
@@ -13,7 +33,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 //}
 
 //About is /about path
-func About(w http.ResponseWriter, r *http.Request) {
+func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "about.page.tmpl.html")
 
 }
