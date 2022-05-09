@@ -8,6 +8,8 @@ Two-time National Cyber League Winner (Individuals & Team Fall 2021 and Spring 2
 
 I am just doing this to study more advanced methods of Golang programming, specifically web servers and web applications since alot of features of Golang is not currently present despite being well documented in... uh... shittier languages like Java.
 
+Of note is the changes in how the Goland IDE by JetBrains has chosen to intepret template files as they now require the .html to be appended to template .tmpl files to support Goland's IDE features.
+
 I'm planning to use this as a template codebase to build custom libraries and Golang packages for...
 
 1. Universal reverse proxies to protect web apps concealed behind a virtual private cloud with a built-in DNS resolver, input validation, support for common API methods such as REST, SOAP, JSON-RPC, and GraphQL
