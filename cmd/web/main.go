@@ -27,20 +27,14 @@ func main() {
 	handlers.NewHandlers(repo)
 
 	render.NewTemplates(&app)
-	//fmt.Println("Hello world!")
-	// This is basically a router.rb or route.py module
-	http.HandleFunc("/", handlers.Repo.Home)
-	http.HandleFunc("/about", handlers.Repo.About)
-	//http.HandleFunc("/divide", Divide)
-	//http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-	//	n, err := fmt.Fprintf(w, "Hello world!")
-	//	if err != nil {
-	//		//log.Fatal(err)
-	//		fmt.Println(err)
-	//	}
-	//	//fmt.Sprintf("Bytes written:%d", n)
-	//	fmt.Println(fmt.Sprintf("Number of bytes written: %d", n))
-	//})
-	_ = http.ListenAndServe(portNumber, nil)
+
+	srv := &http.Server{
+		Addr:    portNumber,
+		Handler: routes(&app),
+	}
+	err = srv.ListenAndServe()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 }
