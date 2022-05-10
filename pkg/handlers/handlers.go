@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"github.com/tanc7/go-course/models"
 	"github.com/tanc7/go-course/pkg/config"
 	"github.com/tanc7/go-course/pkg/render"
 	"net/http"
@@ -26,7 +27,7 @@ func NewHandlers(r *Repository) {
 
 // The first arg specifies a "receiver" which is the instance of Repository struct, you need to set it to render.repo.repository in main because it specifies a receiver now.
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "home.page.tmpl.html")
+	render.RenderTemplate(w, "home.page.tmpl.html", &models.TemplateData{})
 }
 
 //	fmt.Fprintf(w, "This is the homepage")
@@ -34,7 +35,14 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 
 //About is /about path
 func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "about.page.tmpl.html")
+	// perform some logic
+	// send data to template
+	stringMap := make(map[string]string)
+	stringMap["test"] = "Hello, again."
+
+	render.RenderTemplate(w, "about.page.tmpl.html", &models.TemplateData{
+		StringMap: stringMap,
+	})
 
 }
 

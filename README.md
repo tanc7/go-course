@@ -17,6 +17,14 @@ I'm planning to use this as a template codebase to build custom libraries and Go
 3. Agricultural robotics libraries and semi-conscious "artificial intelligence"
 4. Counteracting reverse-engineering attempts by competitors for production-level deployments
 
+# Since this is basically the answers to the online course
+
+I expect you to use this as a reference and not some sort of exam cheatsheet for the course that I linked above.
+
+Furthermore, I am not going to be engaging anyone in some sort of online verbal feud over the superiority or inferiority and drawbacks of Golang (there are many but overall Golang is solid for Linux, and Unix host systems).
+
+I made up my mind to become a Gopher three years ago and there are Googlable case studies on how Golang can be productive (or destructive, like Blackrota). But for the first time of my life, I decided to study Golang properly, to not be a asshole to someone.
+
 # Cross compilation instructions (Linux)
 
 GOOS=linux GOARCH=amd64 go build -o webapp.elf cmd/web/*.go
