@@ -39,7 +39,7 @@ func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 	// send data to template
 	stringMap := make(map[string]string)
 	stringMap["test"] = "Hello, again."
-
+	// send data to template
 	render.RenderTemplate(w, "about.page.tmpl.html", &models.TemplateData{
 		StringMap: stringMap,
 	})
